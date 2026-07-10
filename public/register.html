@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>إنشاء حساب · ALYA API</title>
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          deep: '#071714',
+          panel: '#0c211d',
+          surface: '#10312b',
+          teal: '#2dd4bf',
+          gold: '#f0b429',
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="min-h-screen bg-deep">
+  <div class="min-h-screen grid lg:grid-cols-2">
+
+    <!-- اللوحة البصرية / عنصر التوقيع -->
+    <div class="relative hidden lg:flex flex-col justify-between overflow-hidden bg-panel border-l border-[var(--border-line)] p-12">
+      <div class="absolute inset-0 grid-bg"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-md bg-teal/20 border border-teal flex items-center justify-center">
+            <span class="text-teal font-display font-bold">A</span>
+          </div>
+          <span class="font-display text-lg font-bold text-white">ALYA API</span>
+        </div>
+      </div>
+
+      <div class="relative z-10 flex-1 flex items-center justify-center">
+        <div class="api-pulse w-[380px] h-[380px]">
+          <div class="pulse-ring" style="width:120px;height:120px;top:130px;right:130px;"></div>
+          <div class="pulse-ring" style="width:120px;height:120px;top:130px;right:130px;animation-delay:1.1s;"></div>
+          <div class="pulse-ring" style="width:120px;height:120px;top:130px;right:130px;animation-delay:2.2s;"></div>
+
+          <div class="pulse-node" style="top:184px;right:184px;width:14px;height:14px;"></div>
+          <div class="pulse-node gold" style="top:40px;right:60px;"></div>
+          <div class="pulse-node" style="top:70px;right:300px;"></div>
+          <div class="pulse-node" style="top:300px;right:40px;"></div>
+          <div class="pulse-node gold" style="top:320px;right:270px;"></div>
+          <div class="pulse-node" style="top:60px;right:190px;"></div>
+
+          <div class="pulse-line" style="width:170px;top:100px;right:80px;transform:rotate(35deg);"></div>
+          <div class="pulse-line" style="width:220px;top:95px;right:270px;transform:rotate(-25deg);"></div>
+          <div class="pulse-line" style="width:200px;top:270px;right:60px;transform:rotate(-40deg);"></div>
+          <div class="pulse-line" style="width:230px;top:290px;right:250px;transform:rotate(20deg);"></div>
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-sm">
+        <h2 class="font-display text-2xl font-bold text-white leading-relaxed">
+          انضم إلى ALYA API خلال أقل من دقيقة
+        </h2>
+        <p class="mt-3 leading-loose" style="color:var(--text-muted)">
+          احصل على مفتاح API فور إنشاء حسابك، وابدأ ببناء تطبيقاتك مباشرة.
+        </p>
+      </div>
+    </div>
+
+    <!-- نموذج إنشاء الحساب -->
+    <div class="flex items-center justify-center p-6 sm:p-12">
+      <div class="w-full max-w-sm">
+        <div class="lg:hidden flex items-center gap-2 mb-8 justify-center">
+          <div class="w-8 h-8 rounded-md bg-teal/20 border border-teal flex items-center justify-center">
+            <span class="text-teal font-display font-bold">A</span>
+          </div>
+          <span class="font-display text-lg font-bold text-white">ALYA API</span>
+        </div>
+
+        <h1 class="font-display text-2xl font-bold text-white">إنشاء حساب جديد</h1>
+        <p class="mt-2 text-sm" style="color:var(--text-muted)">أنشئ حسابك للحصول على مفتاح API الخاص بك والبدء فورًا</p>
+
+        <div id="form-error" class="hidden mt-5 rounded-lg border border-red-500/40 bg-red-500/10 text-red-300 text-sm px-4 py-3"></div>
+
+        <form id="register-form" class="mt-6 space-y-4">
+          <div>
+            <label for="name" class="block text-sm mb-1.5" style="color:var(--text-muted)">الاسم الكامل</label>
+            <input id="name" type="text" required autocomplete="name"
+              class="input-field w-full rounded-lg px-4 py-2.5 text-sm"
+              placeholder="اسمك الكامل" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm mb-1.5" style="color:var(--text-muted)">البريد الإلكتروني</label>
+            <input id="email" type="email" required autocomplete="email"
+              class="input-field w-full rounded-lg px-4 py-2.5 text-sm"
+              placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="password" class="block text-sm mb-1.5" style="color:var(--text-muted)">كلمة المرور</label>
+            <input id="password" type="password" required minlength="8" autocomplete="new-password"
+              class="input-field w-full rounded-lg px-4 py-2.5 text-sm"
+              placeholder="8 أحرف على الأقل" />
+          </div>
+          <div>
+            <label for="confirm-password" class="block text-sm mb-1.5" style="color:var(--text-muted)">تأكيد كلمة المرور</label>
+            <input id="confirm-password" type="password" required minlength="8" autocomplete="new-password"
+              class="input-field w-full rounded-lg px-4 py-2.5 text-sm"
+              placeholder="أعد كتابة كلمة المرور" />
+          </div>
+
+          <button id="submit-btn" type="submit" class="btn-primary w-full rounded-lg py-2.5 text-sm mt-2">
+            إنشاء الحساب
+          </button>
+        </form>
+
+        <p class="text-sm text-center mt-6" style="color:var(--text-muted)">
+          لديك حساب بالفعل؟
+          <a href="/login.html" class="link-teal font-medium">سجّل الدخول</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/auth.js"></script>
+</body>
+</html>

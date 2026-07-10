@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>لوحة التحكم · ALYA API</title>
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          deep: '#071714',
+          panel: '#0c211d',
+          surface: '#10312b',
+          teal: '#2dd4bf',
+          gold: '#f0b429',
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="min-h-screen bg-deep">
+
+  <!-- الشريط العلوي -->
+  <header class="border-b border-[var(--border-line)] bg-panel">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-md bg-teal/20 border border-teal flex items-center justify-center">
+          <span class="text-teal font-display font-bold">A</span>
+        </div>
+        <span class="font-display text-lg font-bold text-white">ALYA API</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/docs.html" class="text-sm px-4 py-2 rounded-lg border border-[var(--border-line)] hover:border-teal hover:text-teal transition-colors" style="color:var(--text-muted)">
+          توثيق الأقسام
+        </a>
+        <button id="logout-btn" class="text-sm px-4 py-2 rounded-lg border border-[var(--border-line)] hover:border-teal hover:text-teal transition-colors" style="color:var(--text-muted)">
+          تسجيل الخروج
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-10">
+
+    <!-- حالة التحميل -->
+    <div id="loading-state" class="flex items-center justify-center py-24">
+      <div class="w-8 h-8 rounded-full border-2 border-teal border-t-transparent animate-spin"></div>
+    </div>
+
+    <!-- محتوى اللوحة -->
+    <div id="dashboard-content" class="hidden">
+      <h1 class="font-display text-2xl font-bold text-white">أهلًا، <span id="user-name" class="text-teal"></span> 👋</h1>
+      <p class="mt-1 text-sm" style="color:var(--text-muted)">هذه لوحة التحكم الخاصة بحسابك في ALYA API</p>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-8">
+        <!-- بطاقة معلومات الحساب -->
+        <div class="card-surface rounded-xl p-5 md:col-span-1">
+          <h3 class="font-display font-bold text-white text-sm">معلومات الحساب</h3>
+          <div class="mt-4 space-y-3 text-sm">
+            <div>
+              <p style="color:var(--text-muted)">البريد الإلكتروني</p>
+              <p id="user-email" class="mt-0.5 font-mono text-xs"></p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted)">حالة التوثيق</p>
+              <p id="verify-status" class="mt-0.5 font-medium"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة مفتاح API -->
+        <div class="card-surface rounded-xl p-5 md:col-span-2">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display font-bold text-white text-sm">مفتاح الـ API الخاص بك</h3>
+            <button id="copy-key-btn" class="text-xs px-3 py-1.5 rounded-md border border-[var(--border-line)] hover:border-teal hover:text-teal transition-colors" style="color:var(--text-muted)">
+              نسخ المفتاح
+            </button>
+          </div>
+          <div class="mt-4 rounded-lg bg-panel border border-[var(--border-line)] px-4 py-3 overflow-x-auto scrollbar-thin">
+            <code id="api-key" class="font-mono text-sm text-gold whitespace-nowrap"></code>
+          </div>
+          <p class="mt-3 text-xs leading-relaxed" style="color:var(--text-muted)">
+            استخدم هذا المفتاح في ترويسة الطلبات <code class="font-mono">Authorization</code> عند التعامل مع نقاط نهاية ALYA API. لا تشارك هذا المفتاح مع أي جهة غير موثوقة.
+          </p>
+        </div>
+      </div>
+
+      <!-- بداية سريعة -->
+      <div class="card-surface rounded-xl p-5 mt-4">
+        <div class="flex items-center justify-between flex-wrap gap-3">
+          <h3 class="font-display font-bold text-white text-sm">بداية سريعة</h3>
+          <a href="/docs.html" class="text-xs px-3 py-1.5 rounded-md border border-teal/40 text-teal hover:bg-teal/10 transition-colors">
+            استكشف كل الأقسام وجرّبها →
+          </a>
+        </div>
+        <pre class="mt-3 rounded-lg bg-panel border border-[var(--border-line)] px-4 py-3 text-xs font-mono overflow-x-auto scrollbar-thin" style="color:var(--text-muted)">curl -X POST https://your-domain.com/api/modules/text/reverse \
+  -H "x-api-key: &lt;YOUR_API_KEY&gt;" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "مرحبا"}'</pre>
+      </div>
+    </div>
+  </main>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

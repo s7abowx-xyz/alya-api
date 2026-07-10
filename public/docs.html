@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>توثيق الأقسام · ALYA API</title>
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { deep: '#071714', panel: '#0c211d', surface: '#10312b', teal: '#2dd4bf', gold: '#f0b429' }
+      }
+    }
+  }
+</script>
+</head>
+<body class="min-h-screen bg-deep">
+
+  <header class="border-b border-[var(--border-line)] bg-panel sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-md bg-teal/20 border border-teal flex items-center justify-center">
+          <span class="text-teal font-display font-bold">A</span>
+        </div>
+        <span class="font-display text-lg font-bold text-white">ALYA API</span>
+      </a>
+      <a href="/index.html" class="text-sm px-4 py-2 rounded-lg border border-[var(--border-line)] hover:border-teal hover:text-teal transition-colors" style="color:var(--text-muted)">
+        العودة للوحة التحكم
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="font-display text-2xl font-bold text-white">توثيق الأقسام</h1>
+    <p class="mt-1 text-sm" style="color:var(--text-muted)">كل الأقسام هنا تُكتشف تلقائيًا من مجلد src/modules — جرّبها مباشرة من هنا</p>
+
+    <!-- مفتاح API -->
+    <div class="card-surface rounded-xl p-5 mt-6">
+      <label for="api-key-input" class="block text-sm mb-1.5" style="color:var(--text-muted)">مفتاح API الخاص بك</label>
+      <div class="flex gap-2">
+        <input id="api-key-input" type="text" placeholder="الصق مفتاح الـ API هنا (يظهر في لوحة التحكم)"
+          class="input-field flex-1 rounded-lg px-4 py-2.5 text-sm font-mono" />
+        <button id="save-key-btn" class="btn-primary rounded-lg px-4 text-sm">حفظ</button>
+      </div>
+      <p class="mt-2 text-xs" style="color:var(--text-muted)">يُحفظ محليًا في متصفحك فقط، ويُستخدم تلقائيًا عند تجربة أي وحدة أدناه.</p>
+    </div>
+
+    <div id="loading-state" class="flex items-center justify-center py-16">
+      <div class="w-8 h-8 rounded-full border-2 border-teal border-t-transparent animate-spin"></div>
+    </div>
+
+    <div id="categories-container" class="mt-8 space-y-10 hidden"></div>
+  </main>
+
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/docs.js"></script>
+</body>
+</html>
